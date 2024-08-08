@@ -20,4 +20,10 @@ class View implements ViewInterface
         }
         include $path;
     }
+
+    public static function exception(\Exception $e): void
+    {
+        $path = __DIR__ . "/../../../views/exception.view.php";
+        include $path;
+    }
 }
