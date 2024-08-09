@@ -26,3 +26,5 @@ class App
         $router->handle(Route::list());
     }
 }
+
+//Timecode 1:34
