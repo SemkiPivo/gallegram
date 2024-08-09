@@ -4,6 +4,7 @@ namespace App\Application\Views;
 
 
 
+use App\Application\Config\Config;
 use App\Exceptions\ViewNotFoundException;
 
 class View implements ViewInterface
@@ -25,7 +26,12 @@ class View implements ViewInterface
             'trace' => $e->getTraceAsString(),
             'code' => $e->getCode(),
         ]);
-        $path = __DIR__ . "/../../../views/exception.view.php";
+        $path = __DIR__ . "/../../../views/".Config::get('app.exception_view').".view.php";
+        if (!file_exists($path)){
+            echo $e->getMessage(). "<br><hr>";
+            echo "<pre>{$e->getTraceAsString()}</pre>";
+            return;
+        }
         include $path;
     }
 }

@@ -17,7 +17,9 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">String trace</h5>
-            <p class="card-text"><?=$trace?></p>
+            <p class="card-text"><pre>
+                <?=$trace?>
+            </pre> </p>
         </div>
     </div>
 </div>

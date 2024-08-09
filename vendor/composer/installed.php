@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
         'name' => 'semkipivo/framework',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '97ef88caa9ec6baecfa226e0d5a16e49707ac1c5',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'codin/dot' => array(
+            'pretty_version' => '0.1.3',
+            'version' => '0.1.3.0',
+            'reference' => 'e77839a3518519c22981fe299c16ada655b9aa47',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../codin/dot',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'larapack/dd' => array(
             'pretty_version' => '1.1',
             'version' => '1.1.0.0',
@@ -20,9 +29,9 @@
             'dev_requirement' => true,
         ),
         'semkipivo/framework' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '97ef88caa9ec6baecfa226e0d5a16e49707ac1c5',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
