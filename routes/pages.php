@@ -6,3 +6,5 @@ use App\Controllers\PagesController;
 Route::page('/home', PagesController::class, 'home');
 Route::page('/about', PagesController::class, 'about');
 Route::page('/contacts', PagesController::class, 'contacts');
+
+Route::page('/404', PagesController::class, 'error');

@@ -2,6 +2,8 @@
 
 namespace App\Application\Router;
 
+use App\Controllers\PagesController;
+
 class Router implements RouterInterface
 {
 
@@ -14,6 +16,11 @@ class Router implements RouterInterface
                 $controller = new $route['controller']();
                 $method = $route['method'];
                 $controller->$method();
+                break;
+            }
+            if (!file_exists(__DIR__ . "/../../../views/$uri.view.php")){
+                $controller = new PagesController();
+                $controller->error();
             }
         }
     }

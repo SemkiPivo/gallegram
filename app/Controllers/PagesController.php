@@ -17,4 +17,11 @@ class PagesController
     {
         View::show('pages/contacts');
     }
+
+    public function error(): void
+    {
+        View::show();
+    }
+
+
 }

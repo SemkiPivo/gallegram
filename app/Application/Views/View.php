@@ -12,13 +12,13 @@ class View implements ViewInterface
     /**
      * @throws ViewNotFoundException
      */
-    public static function show(string $page): void
+    public static function show(string $page=null): void
     {
         $path = __DIR__ . "/../../../views/$page.view.php";
-        if (!file_exists($path)){
-            throw new ViewNotFoundException("View ($path) not found");
+        if ($page == null){
+            throw new ViewNotFoundException("Page not found");
         }
-        include $path;
+        else include $path;
     }
 
     public static function exception(\Exception $e): void

@@ -8,7 +8,6 @@ use App\Exceptions\ViewNotFoundException;
 
 class App
 {
-    //timecode 1:04
     public function run(): void
     {
         try {
