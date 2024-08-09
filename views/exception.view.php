@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>404</title>
+    <title>Error has occurred</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -10,9 +10,15 @@
 <div class="container">
     <div class="row mt-5">
         <h1>
-            <span class="badge text-bg-warning">Error 404</span>
-             Page not found
+            <span class="badge text-bg-warning">Error code: <?=$code?></span>
+            <p><?=$message?></p>
         </h1>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">String trace</h5>
+            <p class="card-text"><?=$trace?></p>
+        </div>
     </div>
 </div>
 </body>
