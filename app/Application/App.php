@@ -23,9 +23,10 @@ class App
     {
         Config::init();
         require_once __DIR__ . '/../../routes/pages.php';
+        require_once __DIR__ . '/../../routes/actions.php';
         $router = new Router();
         $router->handle(Route::list());
     }
 }
 
-//Timecode 1:34:00
+//Timecode: 2:26:00
