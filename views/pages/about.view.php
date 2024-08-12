@@ -1,5 +1,7 @@
 <?php
-include __DIR__ . "/../components/header.php";
+use App\Application\Views\View;
+
+View::component('header', ["title" => $title]);
 ?>
 
     <div class="container">
@@ -12,5 +14,5 @@ include __DIR__ . "/../components/header.php";
 
 
 <?php
-include __DIR__ . "/../components/footer.php";
+include __DIR__ . "/../components/footer.view.php";
 ?>

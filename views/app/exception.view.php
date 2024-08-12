@@ -1,5 +1,7 @@
 <?php
-include __DIR__ . "/../components/header.php";
+use App\Application\Views\View;
+
+View::component('header', ["title" => "An error has occurred"]);
 ?>
 <div class="container">
     <div class="row mt-5">
@@ -18,5 +20,5 @@ include __DIR__ . "/../components/header.php";
     </div>
 </div>
 <?php
-include __DIR__ . "/../components/footer.php";
+include __DIR__ . "/../components/footer.view.php";
 ?>
