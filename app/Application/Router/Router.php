@@ -16,7 +16,9 @@ class Router implements RouterInterface
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $type = $requestMethod === 'POST' ? 'action' : 'page';
         $filteredRoutes = self::filter($routes, $type);
+
         foreach ($filteredRoutes as $route) {
+//            dd($route['uri'] );
             if ($route['uri'] === $uri) {
                 self::controller($route);
                 return;

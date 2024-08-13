@@ -5,7 +5,7 @@ View::component('header', ["title" => $title]);
 ?>
 
 <div class="mx-5">
-    <div class="my-5">
+    <div class="my-3">
         <div class="row">
             <h1>
                 <span class="badge rounded-pill text-bg-primary">
@@ -15,7 +15,7 @@ View::component('header', ["title" => $title]);
         </div>
     </div>
 
-    <form action="/php-framework/contact" method="post" class="form">
+    <form action="/contact" method="post" class="form">
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="test@test.com">
@@ -30,7 +30,7 @@ View::component('header', ["title" => $title]);
             <textarea class="form-control" id="message" name="message" rows="7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis facilisis sem, quis iaculis orci. Aenean vitae pretium nisi, id blandit eros. Donec in leo fringilla, sagittis orci in, laoreet nisl. Duis vestibulum mi lorem, eget pharetra arcu elementum vitae. Aenean fermentum quam nec venenatis viverra. Nulla sagittis ante mauris, non venenatis nisl pharetra vel. Praesent fermentum elementum quam id condimentum. Mauris pretium ligula pharetra dictum mattis. Proin velit metus, placerat ac sapien porttitor, varius faucibus odio. Quisque eleifend varius aliquam. Sed et pellentesque nibh.
             </textarea>
         </div>
-        <button type="submit" class="btn btn-primary px-5">Send</button>
+        <button type="submit" class="btn btn-outline-primary px-5">Send</button>
     </form>
 </div>
 

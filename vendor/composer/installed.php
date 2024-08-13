@@ -3,7 +3,7 @@
         'name' => 'semkipivo/framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '97ef88caa9ec6baecfa226e0d5a16e49707ac1c5',
+        'reference' => 'a5a0a8306cd5fc705eeed8b434318d4e99c49af8',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'semkipivo/framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '97ef88caa9ec6baecfa226e0d5a16e49707ac1c5',
+            'reference' => 'a5a0a8306cd5fc705eeed8b434318d4e99c49af8',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

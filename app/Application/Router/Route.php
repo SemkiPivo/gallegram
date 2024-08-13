@@ -10,7 +10,7 @@ class Route implements RouteInterface
     public static function page(string $uri, string $controller, string $method): void
     {
         self::$routes[] = [
-          'uri' => '/php-framework'.$uri,
+          'uri' => $uri,
           'type' => 'page',
           'controller' => $controller,
           'method' => $method,
@@ -20,7 +20,7 @@ class Route implements RouteInterface
     public static function post(string $uri, string $controller, string $method): void
     {
         self::$routes[] = [
-            'uri' => '/php-framework'.$uri,
+            'uri' => $uri,
             'type' => 'action',
             'controller' => $controller,
             'method' => $method,

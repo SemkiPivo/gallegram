@@ -24,4 +24,18 @@ class PagesController
         ]);
     }
 
+    public function login(): void
+    {
+        View::show('pages/login', [
+            'title' => 'Login'
+        ]);
+    }
+
+    public function registration(): void
+    {
+        View::show('pages/registration', [
+            'title' => 'Registration'
+        ]);
+    }
+
 }

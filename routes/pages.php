@@ -7,4 +7,7 @@ Route::page('/home', PagesController::class, 'home');
 Route::page('/about', PagesController::class, 'about');
 Route::page('/contacts', PagesController::class, 'contacts');
 
-Route::page('/404', PagesController::class, 'error');
+Route::page('/login', PagesController::class, 'login');
+Route::page('/registration', PagesController::class, 'registration');
+
+Route::page('/error', PagesController::class, 'error');

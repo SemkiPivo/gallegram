@@ -6,7 +6,7 @@ View::component('header', ["title" => "An error has occurred"]);
 <div class="container">
     <div class="row mt-5">
         <h1>
-            <span class="badge text-bg-warning">Error code: <?=$code?></span>
+            <span class="badge text-bg-danger">Error code: <?=$code?></span>
             <p><?=$message?></p>
         </h1>
     </div>
