@@ -4,12 +4,12 @@ use App\Application\Views\View;
 View::component('header', ["title" => $title]);
 ?>
 
-<div class="mx-5 my-3">
+<div class="mx-5 my-5">
     <div class="card mx-auto" style="width: 35rem;">
         <div class="card-body">
-            <div class="row mx-auto" style="width: 15rem;">
+            <div class="row my-3 mx-auto" style="width: 15rem;">
                 <h1>
-                    <span class="badge rounded-pill text-bg-warning">
+                    <span class="badge rounded-pill text-bg-secondary">
                         Registration
                     </span>
                 </h1>
@@ -28,13 +28,13 @@ View::component('header', ["title" => $title]);
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="password_confirmed" class="form-label">Password confirmation</label>
                     <input type="password" class="form-control" id="password_confirmed" name="password_confirmed">
                 </div>
-                <button type="submit" class="btn btn-outline-warning px-5 me-2">Register</button>
-                or
-                <a class="btn btn-outline-success px-5 ms-2" href="/login">Login</a>
+                <div class="mx-auto" style="width: 10rem">
+                    <button type="submit" class="btn btn-secondary px-5">Sign Up</button>
+                </div>
             </form>
         </div>
     </div>

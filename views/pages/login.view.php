@@ -4,10 +4,10 @@ use App\Application\Views\View;
 View::component('header', ["title" => $title]);
 ?>
 
-<div class="mx-5 my-3">
+<div class="mx-5 my-5">
     <div class="card mx-auto" style="width: 35rem;">
         <div class="card-body">
-            <div class="row mx-auto" style="width: 10rem;">
+            <div class="row my-3 mx-auto" style="width: 10rem;">
                 <h1>
                 <span class="badge rounded-pill text-bg-success">
                     Login
@@ -20,14 +20,12 @@ View::component('header', ["title" => $title]);
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="test@test.com">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <div class="d-flex align-items-center">
-                    <button type="submit" class="btn btn-outline-success px-5">Login</button>
-                    <p class="mx-3 mt-2">or</p>
-                    <a class="btn btn-outline-warning px-5" href="/registration">Register</a>
+                <div class="mx-auto" style="width: 10rem">
+                    <button type="submit" class="btn btn-success px-5">Sign In</button>
                 </div>
 
             </form>

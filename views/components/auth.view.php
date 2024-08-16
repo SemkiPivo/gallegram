@@ -5,10 +5,10 @@ if (!Auth::check()){
 ?>
 
     <div class="d-flex me-2">
-        <div class="btn btn-success ms-lg-2 ms-lg-0">
+        <div class="btn btn-outline-success ms-lg-2 ms-lg-0">
             <a class="nav-link" href="/login">Login</a>
         </div>
-        <div class="btn btn-warning ms-2">
+        <div class="btn btn-outline-secondary ms-2">
             <a class="nav-link" href="/registration">Registration</a>
         </div>
     </div>
