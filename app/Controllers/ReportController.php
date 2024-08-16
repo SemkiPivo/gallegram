@@ -2,20 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Application\Request\Request;
 use App\Application\Router\Redirect;
 use App\Models\Report;
 
 class ReportController
 {
-    public function create(array $data): void
+    public function create(Request $request): void
     {
         // TODO: Data validation
 
         $report = new Report();
-        $report->setEmail($data['email']);
-        $report->setSubject($data['subject']);
-        $report->setMessage($data['message']);
+        $report->setEmail($request->post('email'));
+        $report->setSubject($request->post('subject'));
+        $report->setMessage($request->post('message'));
         $report->store();
-        Redirect::to('/php-framework/home');
+        Redirect::to('/home');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Application;
+use App\Application\Auth\Auth;
 use App\Application\Config\Config;
 use App\Application\Router\Route;
 use App\Application\Router\Router;
@@ -14,7 +15,10 @@ class App
     {
         try {
             $this->handle();
-        } catch (ViewNotFoundException|ComponentViewNotFoundException $e) {
+        } catch (ViewNotFoundException|ComponentViewNotFoundException|\PDOException $e) {
+            if (Config::get("app.debug_mode") == false && get_class($e) == \PDOException::class){
+                View::error(500);
+            } else
             View::exception($e);
         }
     }
@@ -25,8 +29,9 @@ class App
         require_once __DIR__ . '/../../routes/pages.php';
         require_once __DIR__ . '/../../routes/actions.php';
         $router = new Router();
+        Auth::init();
         $router->handle(Route::list());
     }
 }
 
-//Timecode: 3:14:00
+//Timecode: 4:31:20

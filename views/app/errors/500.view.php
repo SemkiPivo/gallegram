@@ -11,15 +11,7 @@ if ($code )
             <p><?=$message?></p>
         </h1>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Stack trace</h5>
-            <p class="card-text"><pre>
-                <?=$trace?>
-            </pre> </p>
-        </div>
-    </div>
 </div>
 <?php
-include __DIR__ . "/../components/footer.view.php";
+View::component('footer');
 ?>

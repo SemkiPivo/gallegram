@@ -2,7 +2,7 @@
 
 namespace App\Application\Router;
 
-use App\Application\Requests\Request;
+use App\Application\Request\Request;
 
 trait RouterHelper
 {
@@ -15,7 +15,7 @@ trait RouterHelper
     protected static function controller(array $route) {
         $controller = new $route['controller']();
         $method = $route['method'];
-//        $request = new Request();
-        $controller->$method();
+        $request = new Request($_POST, $_GET, $_FILES);
+        $controller->$method($request);
     }
 }

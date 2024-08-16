@@ -31,6 +31,7 @@ class View implements ViewInterface
      */
     public static function component(string $component, array $params = []): void
     {
+
         extract($params);
         $path = __DIR__ . "/../../../views/components/$component.view.php";
         if (!file_exists($path)){
@@ -51,6 +52,19 @@ class View implements ViewInterface
             echo $e->getMessage(). "<br><hr>";
             echo "<pre>{$e->getTraceAsString()}</pre>";
             return;
+        }
+        include $path;
+    }
+
+    public static function error(string $code): void
+    {
+        extract([
+            'message' => 'Internal server error',
+            'code' => '500',
+        ]);
+        $path = __DIR__ . "/../../../views/app/errors/$code.view.php";
+        if (!file_exists($path)){
+            throw new ComponentViewNotFoundException("Page ($code).view.php not found", 404);
         }
         include $path;
     }
