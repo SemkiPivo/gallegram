@@ -14,14 +14,23 @@ class UserService implements UserServiceInterface
 
     public function registration(Request $request): void
     {
-        // TODO: Data validation
+        $errors = [];
 
         $user = new User();
         $user->setEmail($request->post('email'));
         $user->setName($request->post('name'));
         $user->setPassword($request->post('password'));
         $user->setDefaultToken();
-        $user->store();
+        $checkUser = (new User())->find('email', $request->post('email'));
+
+        if (strlen($user->getEmail()) === 0)  $errors['email'] = 'An email is required';
+        if (strlen($user->getPassword()) === 0)$errors['password'] = 'An password is required';
+        if (!empty($checkUser)) $errors['database'] = 'User with this email is already exist';
+
+        if (empty($errors)){
+            $user->store();
+        }
+
         Redirect::to('/login');
     }
 
