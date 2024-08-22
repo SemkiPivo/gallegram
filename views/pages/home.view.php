@@ -3,7 +3,7 @@
 use App\Application\Auth\Auth;
 use App\Application\Views\View;
 
-View::component('header', ["title" => $title]);
+View::component('header', ["title" => 'Home']);
 ?>
 
 <div class="container">

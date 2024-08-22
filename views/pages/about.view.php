@@ -1,7 +1,7 @@
 <?php
 use App\Application\Views\View;
 
-View::component('header', ["title" => $title]);
+View::component('header', ["title" => 'About']);
 ?>
 
     <div class="container">

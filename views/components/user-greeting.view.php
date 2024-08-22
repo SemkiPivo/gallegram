@@ -6,7 +6,8 @@ use App\Application\Auth\Auth;
     <?php
         if (Auth::check()){
             $userName = Auth::user()->getName();
-            echo "Welcome, $userName";
+            $userEmail = Auth::user()->getEmail();
+            echo $userName ? "Welcome, $userName" : "Welcome, $userEmail";
         }
     ?>
 </div>

@@ -1,7 +1,7 @@
 <?php
 use App\Application\Views\View;
 
-View::component('header', ["title" => $title]);
+View::component('header', ["title" => 'Login']);
 ?>
 
 <div class="mx-5 my-5">
@@ -18,11 +18,19 @@ View::component('header', ["title" => $title]);
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="test@test.com">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <?php if (isset($errors['email'])): ?>
+                        <div id="emailError" class="ms-1 form-text text-danger"><?= $errors['email'] ?></div>
+                    <?php endif; ?>
+                    <?php if (isset($errors['database'])): ?>
+                        <div id="databaseError" class="ms-1 form-text text-danger"><?= $errors['database'] ?></div>
+                    <?php endif; ?>
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
+                    <?php if (isset($errors['password'])): ?>
+                        <div id="passwordError" class="ms-1 form-text text-danger"><?= $errors['password'] ?></div>
+                    <?php endif; ?>
                 </div>
                 <div class="mx-auto" style="width: 10rem">
                     <button type="submit" class="btn btn-success px-5">Sign In</button>

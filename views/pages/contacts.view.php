@@ -1,7 +1,7 @@
 <?php
 use App\Application\Views\View;
 
-View::component('header', ["title" => $title]);
+View::component('header', ["title" => 'Contacts']);
 ?>
 
     <div class="card mx-auto my-5" style="width: 40rem;">
