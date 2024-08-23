@@ -1,10 +1,12 @@
 <?php
+
+use App\Application\Config\Config;
 use App\Application\Views\View;
 ?>
 
 <nav class="navbar navbar-expand-lg" style="background-color: white">
     <div class="container-fluid">
-        <a class="navbar-brand me-md-auto" href="/home">PHP Mini Framework</a>
+        <a class="navbar-brand me-md-auto text-uppercase" href="/home"><?= Config::get('app.name') ?></a>
         <div class="mx-2 d-lg-none d-flex">
             <?php
                 View::component('user-greeting');

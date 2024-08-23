@@ -11,18 +11,6 @@ class PagesController
             'title' => 'Home'
         ]);
     }
-    public function about(): void
-    {
-        View::show('pages/about', [
-            'title' => 'About'
-        ]);
-    }
-    public function contacts(): void
-    {
-        View::show('pages/contacts', [
-            'title' => 'Contacts'
-        ]);
-    }
 
     public function login(): void
     {

@@ -7,8 +7,9 @@ use App\Application\Config\Config;
 <html lang="<?= Config::get('app.lang') ?>">
 <head>
     <meta charset="UTF-8">
-    <title><?=$title?> - PHP Mini Framework</title>
+    <title><?=$title?> - <?= Config::get('app.name') ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="icon" href="../../elephant.ico" type="image/ico">
 </head>
 <body>
