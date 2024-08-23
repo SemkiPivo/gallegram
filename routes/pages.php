@@ -4,7 +4,7 @@ use App\Application\Router\Route;
 use App\Controllers\PagesController;
 use App\Middleware\GuestMiddleware;
 
-Route::page('/home', PagesController::class, 'home');
+Route::page('/', PagesController::class, 'home');
 Route::page('/about', PagesController::class, 'about');
 Route::page('/contacts', PagesController::class, 'contacts');
 
