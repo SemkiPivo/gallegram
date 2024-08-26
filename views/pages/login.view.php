@@ -4,8 +4,8 @@ use App\Application\Views\View;
 View::component('header', ["title" => 'Login']);
 ?>
 
-<div class="mx-5 my-5">
-    <div class="card mx-auto" style="width: 35rem;">
+<div>
+    <div class="card mx-auto" style="width: 40rem;">
         <div class="card-body">
             <div class="row my-3 mx-auto" style="width: 10rem;">
                 <h1>
@@ -14,7 +14,7 @@ View::component('header', ["title" => 'Login']);
                 </span>
                 </h1>
             </div>
-            <form action="/login" method="post" class="form">
+            <form action="/login" method="post" class="form mx-auto" style="width: 30rem">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="test@test.com">
@@ -33,14 +33,12 @@ View::component('header', ["title" => 'Login']);
                     <?php endif; ?>
                 </div>
                 <div class="mx-auto" style="width: 10rem">
-                    <button type="submit" class="btn btn-success px-5">Sign In</button>
+                    <button type="submit" class="btn btn-success px-5 mt-4 mb-3">Sign In</button>
                 </div>
 
             </form>
         </div>
     </div>
-
-
 </div>
 
 

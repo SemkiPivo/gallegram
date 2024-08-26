@@ -15,13 +15,20 @@ class UserService implements UserServiceInterface
 
     public function registration(Request $request): void
     {
-        $errors = [];
+        $errors = $request->validation([
+           'email' =>  ['required', 'email'],
+           'name' =>  ['required'],
+        ]);
+        if (!$request->validationStatus()){
+            Redirect::to('/registration');
+        }
 
-        if (!Validator::string($request->post('email'), max: 64)) $errors['email'] = 'Email is required and must be lesser then 64 characters';
-        else if (!Validator::email($request->post('email'))) $errors['email'] = 'Please enter a correct email';
-        if (!Validator::string($request->post('password'), max: 64)) $errors['password'] = 'Password is required and must be lesser then 64 characters';
-        if (!Validator::password($request->post('password'), $request->post('password_confirmed'))) $errors['password_confirmed'] = 'Passwords are not the same';
-        if (!Validator::unique($request->post('email'), $checkUser = new User, 'email')) $errors['database'] = 'User with this email already exist';
+
+//        if (!Validator::string($request->post('email'), max: 64)) $errors['email'] = 'Email is required and must be lesser then 64 characters';
+//        else if (!Validator::email($request->post('email'))) $errors['email'] = 'Please enter a correct email';
+//        if (!Validator::string($request->post('password'), max: 64)) $errors['password'] = 'Password is required and must be lesser then 64 characters';
+//        if (!Validator::password($request->post('password'), $request->post('password_confirmed'))) $errors['password_confirmed'] = 'Passwords are not the same';
+//        if (!Validator::unique($request->post('email'), $checkUser = new User, 'email')) $errors['database'] = 'User with this email already exist';
 
         if (empty($errors)){
             $user = new User();
@@ -50,7 +57,7 @@ class UserService implements UserServiceInterface
             $token = Random::str(50);
             $user->update([Auth::getTokenColumn() => $token]);
             setcookie(Auth::getTokenColumn(), $token);
-            Redirect::to('/home');
+            Redirect::to('/');
         } else require 'views/pages/login.view.php';
     }
 
@@ -58,6 +65,6 @@ class UserService implements UserServiceInterface
     {
         unset($_COOKIE[Auth::getTokenColumn()]);
         setcookie(Auth::getTokenColumn(), null);
-        Redirect::to('/home');
+        Redirect::to('/');
     }
 }

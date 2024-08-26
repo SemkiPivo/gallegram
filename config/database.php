@@ -3,7 +3,7 @@
 return [
     'driver' => "mysql",
     'host' => "localhost",
-    'dbname' => "php-framework",
+    'dbname' => "gallegram",
     'port' => "3306",
     'user' => "root",
     'password' => "",

@@ -7,9 +7,10 @@ use App\Application\Database\Model;
 class User extends Model
 {
     protected string $table = 'users';
-    protected array $fields = ['email', 'name', 'password', 'token'];
+    protected array $fields = ['email', 'name', 'avatar', 'password', 'token'];
     protected string $email;
     protected string $name;
+    protected string $avatar;
     protected string $password;
     protected ?string $token;
 
@@ -21,6 +22,10 @@ class User extends Model
     public function setName(string $name):void
     {
         $this->name = $name;
+    }
+    public function setAvatar(string $avatar):void
+    {
+        $this->avatar = $avatar;
     }
 
     public function setPassword(string $password):void
@@ -37,6 +42,11 @@ class User extends Model
     {
         return $this->name;
     }
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
     public function getEmail(): string
     {
         return $this->email;
