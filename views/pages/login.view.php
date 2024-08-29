@@ -1,8 +1,16 @@
 <?php
+
+use App\Application\Alerts\Alert;
 use App\Application\Views\View;
 
 View::component('header', ["title" => 'Login']);
 ?>
+
+<?php if(Alert::successMessage()){?>
+    <div class="alert alert-success" role="alert">
+        <?=Alert::successMessage(true)?>
+    </div>
+<?php }?>
 
 <div>
     <div class="card mx-auto" style="width: 40rem;">
@@ -17,7 +25,7 @@ View::component('header', ["title" => 'Login']);
             <form action="/login" method="post" class="form mx-auto" style="width: 30rem">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="test@test.com">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
                     <?php if (isset($errors['email'])): ?>
                         <div id="emailError" class="ms-1 form-text text-danger"><?= $errors['email'] ?></div>
                     <?php endif; ?>

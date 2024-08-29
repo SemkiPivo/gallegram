@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
+use App\Application\Alerts\Alert;
 use App\Application\Auth\Auth;
 use App\Application\Helpers\Random;
 use App\Application\Request\Request;
 use App\Application\Router\Redirect;
 use App\Application\Validation\Validator;
+use App\Enums\AlertEnum;
 use App\Models\User;
 
 class UserService implements UserServiceInterface
@@ -16,26 +18,24 @@ class UserService implements UserServiceInterface
     public function registration(Request $request): void
     {
         $errors = $request->validation([
-            'password' =>  ['required', 'password_confirmed'],
            'email' =>  ['required', 'email'],
            'name' =>  ['required'],
+           'password' =>  ['required', 'password_confirmed'],
         ]);
         if (!$request->validationStatus()){
+            Alert::setMessage('Please provide correct registration data');
             Redirect::to('/registration');
         }
 
-        if (empty($errors)){
-            $user = new User();
-            $user->setEmail($request->post('email'));
-            $user->setName($request->post('name'));
-            $user->setPassword($request->post('password'));
-            $user->setAvatar($request->post('avatar') ?? '');
-            $user->setDefaultToken();
-            $user->store();
-            Redirect::to('/login');
-        } else {
-            Redirect::to('/registration');
-        }
+        $user = new User();
+        $user->setEmail($request->post('email'));
+        $user->setName($request->post('name'));
+        $user->setPassword($request->post('password'));
+        $user->setAvatar($request->post('avatar') ?? '');
+        $user->setDefaultToken();
+        $user->store();
+        Alert::setMessage("Registration successful, please log in!", AlertEnum::SUCCESS);
+        Redirect::to('/login');
     }
 
     public function login(Request $request): void
