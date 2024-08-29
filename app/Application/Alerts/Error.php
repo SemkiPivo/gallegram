@@ -24,9 +24,14 @@ class Error implements ErrorInterface
         return isset(self::list()[$key]);
     }
 
-    public static function get(string $key, bool $all = false): string|array
+    public static function get(string $key, bool $all = false): string|array|null
     {
-        return $all ? self::list()[$key] : self::list()[$key][0];
+        if (isset(self::list()[$key])){
+            $result = $all ? self::list()[$key] : self::list()[$key][0];
+            unset(self::$errors[$key]);
+            self::store(self::list());
+            return $result;
+        }
+        return null;
     }
-
 }

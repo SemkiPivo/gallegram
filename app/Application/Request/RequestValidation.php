@@ -3,6 +3,7 @@
 namespace App\Application\Request;
 
 use App\Application\Alerts\Error;
+use App\Application\Config\Config;
 
 trait RequestValidation
 {
@@ -15,12 +16,17 @@ trait RequestValidation
                 switch ($rule){
                     case 'required':
                         if (empty($data[$field])) {
-                            $this->errors[$field][] = '"'. $field .'" field is required';
+                            $this->errors[$field][] = 'This field is required';
                         }
                         break;
                     case 'email':
                         if (!filter_var($data[$field], FILTER_VALIDATE_EMAIL)) {
-                            $this->errors[$field][] = '"'. $field .'" field must be in correct format';
+                            $this->errors[$field][] = 'This field must be in the correct format';
+                        }
+                        break;
+                    case 'password_confirmed':
+                        if ($data[$field] !== $data[Config::get('validation.password_confirmation_title')]) {
+                            $this->errors[$field][] = 'Passwords are not the same';
                         }
                         break;
                 }

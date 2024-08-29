@@ -16,6 +16,7 @@ class UserService implements UserServiceInterface
     public function registration(Request $request): void
     {
         $errors = $request->validation([
+            'password' =>  ['required', 'password_confirmed'],
            'email' =>  ['required', 'email'],
            'name' =>  ['required'],
         ]);
@@ -23,23 +24,17 @@ class UserService implements UserServiceInterface
             Redirect::to('/registration');
         }
 
-
-//        if (!Validator::string($request->post('email'), max: 64)) $errors['email'] = 'Email is required and must be lesser then 64 characters';
-//        else if (!Validator::email($request->post('email'))) $errors['email'] = 'Please enter a correct email';
-//        if (!Validator::string($request->post('password'), max: 64)) $errors['password'] = 'Password is required and must be lesser then 64 characters';
-//        if (!Validator::password($request->post('password'), $request->post('password_confirmed'))) $errors['password_confirmed'] = 'Passwords are not the same';
-//        if (!Validator::unique($request->post('email'), $checkUser = new User, 'email')) $errors['database'] = 'User with this email already exist';
-
         if (empty($errors)){
             $user = new User();
             $user->setEmail($request->post('email'));
             $user->setName($request->post('name'));
             $user->setPassword($request->post('password'));
+            $user->setAvatar($request->post('avatar') ?? '');
             $user->setDefaultToken();
             $user->store();
             Redirect::to('/login');
         } else {
-            require('views/pages/registration.view.php');
+            Redirect::to('/registration');
         }
     }
 

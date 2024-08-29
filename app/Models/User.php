@@ -10,7 +10,7 @@ class User extends Model
     protected array $fields = ['email', 'name', 'avatar', 'password', 'token'];
     protected string $email;
     protected string $name;
-    protected string $avatar;
+    protected ?string $avatar;
     protected string $password;
     protected ?string $token;
 
