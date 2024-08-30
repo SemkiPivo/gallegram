@@ -31,13 +31,13 @@ class Model extends Connection implements ModelInterface
     }
 
     public function store(): void{
+
         $columns = implode(', ', array_map(function ($field){
             return "`$field`";
         }, $this->fields));
         $binds = implode(', ', array_map(function ($field){
             return ":$field";
         }, $this->fields));
-
         $query = "INSERT INTO `$this->table` ($columns) VALUES ($binds)";
         $stmt = $this->connect()->prepare($query);
 

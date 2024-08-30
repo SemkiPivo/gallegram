@@ -34,12 +34,12 @@ trait RequestValidation
                     case explode(':', $rule)[0] == 'unique':
                         $model = "App\\Models\\". explode(':', $rule)[1];
                         $model = new $model;
-                        $object = $model->find($field, $data['field']);
-                        if (isset($object)) {
+                        $object = $model->find($field, $data[$field]);
+                        if ($object) {
                             $this->errors[$field][] = 'User with this email already exists';
                         }
                         break;
-                    case explode(':', $rule)[0] == 'exists':
+                    case explode(':', $rule)[0] == 'exist':
                         $model = "App\\Models\\". explode(':', $rule)[1];
                         $model = new $model;
                         $object = $model->find($field, $data[$field]);

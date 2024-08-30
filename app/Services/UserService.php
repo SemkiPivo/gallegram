@@ -17,9 +17,9 @@ class UserService implements UserServiceInterface
 
     public function registration(Request $request): void
     {
-        $request->validation([
+        $errors = $request->validation([
            'email' =>  ['required', 'email', 'unique:User'],
-           'name' =>  ['required', 'max:10'],
+           'name' =>  ['required', 'max:64'],
            'password' =>  ['required', 'password_confirmed', 'min:6'],
         ]);
         if (!$request->validationStatus()){
