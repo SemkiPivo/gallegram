@@ -55,6 +55,7 @@ View::component('header', ["title" => 'Registration']);
         </div>
     </div>
 </div>
+
 <script>
     let password = document.getElementById('password');
     let passwordConfirmation = document.getElementById('password_confirmation');

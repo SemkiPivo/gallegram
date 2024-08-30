@@ -2,6 +2,8 @@
 
 use App\Application\Alerts\Alert;
 use App\Application\Views\View;
+use App\Application\Alerts\Error;
+
 
 View::component('header', ["title" => 'Login']);
 ?>
@@ -9,6 +11,11 @@ View::component('header', ["title" => 'Login']);
 <?php if(Alert::successMessage()){?>
     <div class="alert alert-success" role="alert">
         <?=Alert::successMessage(true)?>
+    </div>
+<?php }?>
+<?php if(Alert::dangerMessage()){?>
+    <div class="alert alert-danger" role="alert">
+        <?=Alert::dangerMessage(true)?>
     </div>
 <?php }?>
 
@@ -22,26 +29,23 @@ View::component('header', ["title" => 'Login']);
                 </span>
                 </h1>
             </div>
-            <form action="/login" method="post" class="form mx-auto" style="width: 30rem">
+            <form action="/login" method="post" class="form mx-auto col justify-content-center" style="width: 30rem">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                    <?php if (isset($errors['email'])): ?>
-                        <div id="emailError" class="ms-1 form-text text-danger"><?= $errors['email'] ?></div>
-                    <?php endif; ?>
-                    <?php if (isset($errors['database'])): ?>
-                        <div id="databaseError" class="ms-1 form-text text-danger"><?= $errors['database'] ?></div>
-                    <?php endif; ?>
+                    <input type="text" class="form-control <?=Error::has('email') ? 'is-invalid' : '' ?>" id="email" name="email" aria-describedby="emailHelp">
+                    <div id="validationEmail" class="invalid-feedback">
+                        <?=Error::get('email')?>
+                    </div>
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                    <?php if (isset($errors['password'])): ?>
-                        <div id="passwordError" class="ms-1 form-text text-danger"><?= $errors['password'] ?></div>
-                    <?php endif; ?>
+                    <input type="password" class="form-control <?=Error::has('password') ? 'is-invalid' : '' ?>" id="password" name="password">
+                    <div id="validationPassword" class="invalid-feedback"><?=Error::get('password')?></div>
                 </div>
-                <div class="mx-auto" style="width: 10rem">
+                <div class="mx-auto row" style="width: 15rem">
                     <button type="submit" class="btn btn-success px-5 mt-4 mb-3">Sign In</button>
+                    <p class="mt-2 text-center text-secondary">Don't have an account?</p>
+                    <a href="/registration" class="btn btn-outline-secondary mb-3">Sign up</a>
                 </div>
 
             </form>

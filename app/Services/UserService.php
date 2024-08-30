@@ -17,10 +17,10 @@ class UserService implements UserServiceInterface
 
     public function registration(Request $request): void
     {
-        $errors = $request->validation([
-           'email' =>  ['required', 'email'],
-           'name' =>  ['required'],
-           'password' =>  ['required', 'password_confirmed'],
+        $request->validation([
+           'email' =>  ['required', 'email', 'unique:User'],
+           'name' =>  ['required', 'max:10'],
+           'password' =>  ['required', 'password_confirmed', 'min:6'],
         ]);
         if (!$request->validationStatus()){
             Alert::setMessage('Please provide correct registration data');
@@ -40,20 +40,24 @@ class UserService implements UserServiceInterface
 
     public function login(Request $request): void
     {
-        $errors = [];
-        $user = (new User())->find('email', $request->post('email'));
-        if (!Validator::string($request->post('email'))) $errors['email'] = 'Email is required';
-        else if (!Validator::email($request->post('email'))) $errors['email'] = 'Please enter a correct email';
-        else if (!$user) $errors['database'] = 'There is no user with this email';
-        if (!Validator::string($request->post('password'))) $errors['password'] = 'Password is required';
-        else if (!isset($errors['database']) && !password_verify($request->post('password'), $user->getPassword())) $errors['password'] = 'Password is incorrect';
-
-        if (empty($errors)){
-            $token = Random::str(50);
-            $user->update([Auth::getTokenColumn() => $token]);
-            setcookie(Auth::getTokenColumn(), $token);
-            Redirect::to('/');
-        } else require 'views/pages/login.view.php';
+        $errors = $request->validation([
+            'email' =>  ['required', 'email', 'exists:User'],
+            'password' =>  ['required'],
+        ]);
+        if (empty($errors)) {
+            $user = (new User())->find('email', $request->post('email'));
+            $passwordStatus = password_verify($request->post('password'), $user->getPassword());
+            if ($passwordStatus){
+                $token = Random::str(50);
+                $user->update([Auth::getTokenColumn() => $token]);
+                setcookie(Auth::getTokenColumn(), $token);
+                Redirect::to('/');
+            }
+        }
+        if (!$request->validationStatus()){
+            Alert::setMessage('Incorrect data, please try again ');
+            Redirect::to('/login');
+        }
     }
 
     public function logout(): void
