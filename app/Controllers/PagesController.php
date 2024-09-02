@@ -26,4 +26,11 @@ class PagesController
         ]);
     }
 
+    public function profile(): void
+    {
+        View::show('pages/profile', [
+            'title' => 'Profile'
+        ]);
+    }
+
 }

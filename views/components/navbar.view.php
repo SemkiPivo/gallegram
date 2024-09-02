@@ -1,5 +1,6 @@
 <?php
 
+use App\Application\Auth\Auth;
 use App\Application\Config\Config;
 use App\Application\Views\View;
 ?>
@@ -22,9 +23,11 @@ use App\Application\Views\View;
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+                <?php if (Auth::check()){?>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/profile">Profile</a>
                 </li>
+                <?php }?>
             </ul>
             <div class="mb-md-3 mb-lg-0 d-md-none d-lg-flex">
                 <?php

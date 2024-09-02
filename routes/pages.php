@@ -8,3 +8,4 @@ Route::page('/', PagesController::class, 'home');
 
 Route::page('/login', PagesController::class, 'login', GuestMiddleware::class);
 Route::page('/registration', PagesController::class, 'registration', GuestMiddleware::class);
+Route::page('/profile', PagesController::class, 'profile');

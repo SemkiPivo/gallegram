@@ -61,4 +61,9 @@ class Model extends Connection implements ModelInterface
         $data['id'] = $this->id;
         $stmt->execute($data);
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

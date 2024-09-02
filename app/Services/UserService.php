@@ -14,7 +14,6 @@ use App\Models\User;
 class UserService implements UserServiceInterface
 {
 
-
     public function registration(Request $request): void
     {
         $errors = $request->validation([

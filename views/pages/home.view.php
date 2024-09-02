@@ -5,7 +5,6 @@ use App\Application\Views\View;
 
 View::component('header', ["title" => 'Home']);
 ?>
-
     <div class="card mb-3">
         <div class="square">
             <img src="../../storage/images/1.jpg" class="card-img-top img-square" alt="...">
@@ -16,7 +15,6 @@ View::component('header', ["title" => 'Home']);
             <a href="#" class="card-link">Another link</a>
         </div>
     </div>
-
 <?php
 include __DIR__ . "/../components/footer.view.php";
 ?>
