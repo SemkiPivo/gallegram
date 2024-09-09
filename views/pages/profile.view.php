@@ -30,7 +30,7 @@ $user = Auth::user();
                         <p class="text-secondary"><?= $user->getEmail() ?></p>
                     </div>
                     <div>
-                        <p>*description*</p>
+                        <p><?= $user->getDescription() ?></p>
                     </div>
                 </div>
             </div>
